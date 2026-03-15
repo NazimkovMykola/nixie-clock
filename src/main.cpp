@@ -31,7 +31,7 @@ void runSlotMachine() {
   // Робимо 15 швидких переборів
   for (int i = 0; i < 15; i++) {
     for (int j = 0; j < 5; j++) { // Внутрішній цикл для видимості світіння
-      for (byte lamp = 1; lamp < 4; lamp++) {
+      for (byte lamp = 0; lamp < 4; lamp++) {
         displayDigit(lamp, (i + lamp) % 10);
       }
     }
@@ -51,12 +51,13 @@ void loop() {
   }
 
   byte digits[4];
+  digits[0] = now.hour() / 10;
   digits[1] = now.hour() % 10;
   digits[2] = now.minute() / 10;
   digits[3] = now.minute() % 10;
 
   // Основний вивід часу
-  for (byte i = 1; i < 4; i++) {
+  for (byte i = 0; i < 4; i++) {
     displayDigit(i, digits[i]);
   }
 }
